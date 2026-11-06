@@ -25,18 +25,17 @@ enum class Navigasi {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SiswaApp(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     viewModel: SiswaViewModel = viewModel(),
-    navController: NavHostController = rememberNavController(),
-    cancelAndBackToFormulir: (NavHostController) -> Unit
+    navController: NavHostController = rememberNavController()
 ){
-    Scaffold { isiRuang->
+    Scaffold(modifier = modifier) { isiRuang ->
         val uiState = viewModel.statusUI.collectAsState()
         NavHost(
             navController = navController,
             startDestination = Navigasi.Formulir.name,
-
-            modifier = Modifier.padding(isiRuang)){
+            modifier = Modifier.padding(isiRuang)
+        ){
             composable(route = Navigasi.Formulir.name){
                 val konteks = LocalContext.current
                 FormSiswa(
@@ -56,6 +55,7 @@ fun SiswaApp(
         }
     }
 }
+
 private fun cancelAndBackToFormulir(
     navController: NavHostController
 ){
