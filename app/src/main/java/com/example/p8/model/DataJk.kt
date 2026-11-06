@@ -5,6 +5,6 @@ import com.example.p8.R
 object DataJk {
     val JenisK= listOf(
         R.string.laki,
-        R.string.perempuan
+        R.string.wanita
     )
 }
